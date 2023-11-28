@@ -14,7 +14,12 @@ namespace GangSkinsCollectorF.Models
         {
             var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
             var db = ConM.GetDatabase("GangSkins");
-            var SummonerCollection = db.GetCollection<Skins>("Skins");
+            var SummonerCollection = db.GetCollection<Skins>("Skins"); ;
+            if (O1[1].name.Contains("Goth"))
+                SummonerCollection =  db.GetCollection<Skins>("SkinsEN");
+            if (O1[1].name.Contains("Gótica"))
+                SummonerCollection = db.GetCollection<Skins>("SkinsES");
+
             List<Skins> AllSkins = SummonerCollection.Find(x => true).ToList();
             List<SkinsCollectionFull> FullList = new List<SkinsCollectionFull>();
             try
