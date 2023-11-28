@@ -3,13 +3,18 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
+using System.Xml.Linq;
 
 
 namespace GangSkinsCollectorF
@@ -19,15 +24,22 @@ namespace GangSkinsCollectorF
     /// </summary>
     public partial class MainWindow : Window
     {
-         string logPath = System.IO.Directory.GetCurrentDirectory();
+        string logPath = System.IO.Directory.GetCurrentDirectory();
+        private  DispatcherTimer timer = new()
+        {
+            Interval = TimeSpan.FromSeconds(1),
+            IsEnabled = true
+        };
         public MainWindow()
         {
             InitializeComponent();
             CreateLog();
+            timer.Tick += Timer_Tick;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            btnSend.IsEnabled = false;
             sendSpn.Visibility = Visibility.Visible;
             txbCompleated.Visibility = Visibility.Visible;
             txbCompleated.Text = "Wait";
@@ -43,7 +55,6 @@ namespace GangSkinsCollectorF
                     var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
                     var db = ConM.GetDatabase("GangSkins");
                     Log("Det DB From GangSkins", w);
-
                     var collections = db.ListCollectionNames().ToList();
                     Log("Get CollectionNames List from Mongo", w);
 
@@ -58,7 +69,7 @@ namespace GangSkinsCollectorF
                     Log("GetSkinsOfSummonerInBSON compleated", w);
                     List<SkinsCollectionFull> SCFull = ToolsMethods.TransformSC(BsonmToInstert.Result);
                     List<BsonDocument> ListOfBsons = new List<BsonDocument>();
-                    foreach (var item in BsonmToInstert.Result)
+                    foreach (var item in SCFull)
                     {
                         string jsonString = JsonSerializer.Serialize(item);
                         BsonDocument onebson = BsonDocument.Parse(jsonString);
@@ -85,6 +96,7 @@ namespace GangSkinsCollectorF
                     Log(error.Message, w);
                 }
             }
+            btnSend.IsEnabled = true;
         }
 
         private void CircleButton_Click(object sender, RoutedEventArgs e)
@@ -135,6 +147,28 @@ namespace GangSkinsCollectorF
             catch (Exception Ex)
             {
                 Console.WriteLine(Ex.ToString());
+            }
+        }
+        public async void Timer_Tick( object? sender, EventArgs e)
+        {
+            Process[] pname = Process.GetProcessesByName("LeagueClient");
+            if (pname.Length > 0)
+            {
+                Thread.Sleep(18000);
+                timer.Stop();
+                btnSend.IsEnabled = true;
+                txbCompleated.Visibility = Visibility.Visible;
+                txbCompleated.Text = "Thnks, now you can send your skins :)";
+                Style txtOnline = Application.Current.FindResource("LeagueOnlineText") as Style;
+                txbCompleated.Style = txtOnline;
+            }
+            else
+            {                     
+                btnSend.IsEnabled = false;
+                txbCompleated.Visibility = Visibility.Visible;
+                txbCompleated.Text = "Open your LOL game before, please";
+                Style txtOnline = Application.Current.FindResource("LeagueBusyText") as Style;
+                txbCompleated.Style = txtOnline;
             }
         }
     }

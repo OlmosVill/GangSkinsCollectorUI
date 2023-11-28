@@ -10,38 +10,46 @@ namespace GangSkinsCollectorF.Models
 {
     public class ToolsMethods
     {
-        public static List<SkinsCollectionFull> TransformSC(List<SkinsCollections>O1)
+        public static List<SkinsCollectionFull> TransformSC(List<SkinsCollections> O1)
         {
             var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
             var db = ConM.GetDatabase("GangSkins");
             var SummonerCollection = db.GetCollection<Skins>("Skins");
             List<Skins> AllSkins = SummonerCollection.Find(x => true).ToList();
             List<SkinsCollectionFull> FullList = new List<SkinsCollectionFull>();
-            for (int i = 0; i < AllSkins.Count; i++)
+            try
             {
-                if (O1[i].name == AllSkins[i].skinchampkey.name)
+                foreach (var obj1 in O1)
                 {
-                    foreach (var obj in O1)
+                    foreach (var obj2 in AllSkins)
                     {
-                        SkinsCollectionFull item = new SkinsCollectionFull();
-                        item.championId = obj.championId;
-                        item.chromaPath = obj.chromaPath;
-                        item.disabled = obj.disabled;
-                        item.id = obj.id;
-                        item.isBase = obj.isBase;
-                        item.lastSelected = obj.lastSelected;
-                        item.name = obj.name;
-                        item.owned = obj.ownership.loyaltyReward;
-                        item.splashPath = obj.splashPath;
-                        item.stillObtainable = obj.stillObtainable;
-                        item.tilePath = obj.tilePath;
-                        if (AllSkins[i].skinchampkey.skinLines != null)
+                        if (obj2.skinchampkey.name == obj1.name)
                         {
-                            item.skinLines = AllSkins[i].skinchampkey.skinLines[0].id;
+                            SkinsCollectionFull item = new SkinsCollectionFull();
+                            item.championId = obj1.championId;
+                            item.chromaPath = obj1.chromaPath;
+                            item.disabled = obj1.disabled;
+                            item.id = obj1.id;
+                            item.isBase = obj1.isBase;
+                            item.lastSelected = obj1.lastSelected;
+                            item.name = obj1.name;
+                            item.owned = obj1.ownership.owned;
+                            item.splashPath = obj1.splashPath;
+                            item.stillObtainable = obj1.stillObtainable;
+                            item.tilePath = obj1.tilePath;
+                            if (obj2.skinchampkey.skinLines != null)
+                            {
+                                item.skinLines = obj2.skinchampkey.skinLines[0].idSkinlines;
+                            }
+                            FullList.Add(item);
+                            break;
                         }
                     }
                 }
             }
+            catch (Exception e)
+            {
+            }     
             return FullList;
         }
     }

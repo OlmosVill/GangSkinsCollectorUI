@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace GangSkinsCollectorF.Models
 {
-    [BsonIgnoreExtraElements]
     public class Skins
     {
         // SkinsChamps myDeserializedClass = JsonConvert.DeserializeObject<List<SkinsChamps>>(myJsonResponse);
@@ -28,8 +27,8 @@ namespace GangSkinsCollectorF.Models
         [BsonIgnoreExtraElements]
         public class Chroma
         {
-            [JsonPropertyName("id")]
-            public int? id { get; set; }
+            [JsonPropertyName("idChromaSkin")]
+            public int? idChromaSkin { get; set; }
 
             [JsonPropertyName("name")]
             public string name { get; set; }
@@ -107,11 +106,11 @@ namespace GangSkinsCollectorF.Models
             public int? rarity { get; set; }
         }
 
-        [BsonIgnoreExtraElements]
+        
         public class Skinchampkey
         {
-            [JsonPropertyName("id")]
-            public int? id { get; set; }
+            [JsonPropertyName("idSC")]
+            public int? idSC { get; set; }
 
             [JsonPropertyName("isBase")]
             public bool? isBase { get; set; }
