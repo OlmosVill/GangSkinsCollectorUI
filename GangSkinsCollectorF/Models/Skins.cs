@@ -11,7 +11,6 @@ namespace GangSkinsCollectorF.Models
 {
     public class Skins
     {
-        // SkinsChamps myDeserializedClass = JsonConvert.DeserializeObject<List<SkinsChamps>>(myJsonResponse);
         [JsonPropertyName("_id")]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -23,7 +22,6 @@ namespace GangSkinsCollectorF.Models
         [JsonPropertyName("skinchampkey")]
         public Skinchampkey skinchampkey { get; set; }
 
-        // Root myDeserializedClass = JsonSerializer.Deserialize<List<Root>>(myJsonResponse);
         [BsonIgnoreExtraElements]
         public class Chroma
         {

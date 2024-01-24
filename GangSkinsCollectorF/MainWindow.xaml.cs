@@ -7,14 +7,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
-using System.Xml.Linq;
 
 
 namespace GangSkinsCollectorF
@@ -25,16 +23,11 @@ namespace GangSkinsCollectorF
     public partial class MainWindow : Window
     {
         string logPath = System.IO.Directory.GetCurrentDirectory();
-        private  DispatcherTimer timer = new()
-        {
-            Interval = TimeSpan.FromSeconds(1),
-            IsEnabled = true
-        };
+        
         public MainWindow()
         {
             InitializeComponent();
             CreateLog();
-            timer.Tick += Timer_Tick;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +45,7 @@ namespace GangSkinsCollectorF
                     Log("GetSummonerInfo from LCU", w);
                     Task<List<SkinsCollections>> SkinsOfSummoner = LCUMethods.GetSkinsOfSummoner(SummonerID.Result.summonerId.GetValueOrDefault());
                     Log("Get SkinstOfSummoner LCU", w);
-                    var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
+                    var ConM = new MongoClient("mongodb+srv://GangSkinsUser:NormalUser1@almosttesting.bz8a5nn.mongodb.net/");
                     var db = ConM.GetDatabase("GangSkins");
                     Log("Det DB From GangSkins", w);
                     var collections = db.ListCollectionNames().ToList();
@@ -89,8 +82,8 @@ namespace GangSkinsCollectorF
                     sendSpn.Visibility = Visibility.Hidden;
                     txbCompleated.Visibility = Visibility.Visible;
                     txbLog.Visibility = Visibility.Visible;
-                    txbCompleated.Text = "Error, not compleated";
-                    txbCompleated.Padding = new Thickness(0, 20, 0, 0);
+                    txbCompleated.Text = (error.Message == "Not connected to LCU") ? "Maybe you dont opened yout lol ¬¬" : "Maybe you dont opened yout lol ¬¬";
+                    txbCompleated.Padding = new Thickness(0, 0, 0, 0);
                     Style txtOnline = Application.Current.FindResource("LeagueBusyText") as Style;
                     txbCompleated.Style = txtOnline;
                     Log(error.Message, w);
@@ -101,7 +94,9 @@ namespace GangSkinsCollectorF
 
         private void CircleButton_Click(object sender, RoutedEventArgs e)
         {
-
+            InfoModal modal = new InfoModal();
+            modal.Owner = this;
+            modal.ShowDialog();         
         }
         private void openFile_Click(object sender, RoutedEventArgs e)
         {
@@ -129,19 +124,14 @@ namespace GangSkinsCollectorF
         {
             try
             {
-                // Check if file already exists. If yes, delete it.
                 if (File.Exists(logPath + "\\" + "log.txt"))
                 {
                     File.Delete(logPath + "\\" + "log.txt");
                 }
-
-                // Create a new file
                 using (FileStream fs = File.Create(logPath + "\\" + "log.txt"))
                 {
-                    // Add some text to file
                     Byte[] title = new UTF8Encoding(true).GetBytes("Created at: " + DateTime.Today.ToString());
-                    fs.Write(title, 0, title.Length);
-                    
+                    fs.Write(title, 0, title.Length);              
                 }
             }
             catch (Exception Ex)
@@ -149,27 +139,12 @@ namespace GangSkinsCollectorF
                 Console.WriteLine(Ex.ToString());
             }
         }
-        public async void Timer_Tick( object? sender, EventArgs e)
+        
+        private void LlamarModalClick(object sender, RoutedEventArgs e)
         {
-            Process[] pname = Process.GetProcessesByName("LeagueClient");
-            if (pname.Length > 0)
-            {
-                Thread.Sleep(18000);
-                timer.Stop();
-                btnSend.IsEnabled = true;
-                txbCompleated.Visibility = Visibility.Visible;
-                txbCompleated.Text = "Thnks, now you can send your skins :)";
-                Style txtOnline = Application.Current.FindResource("LeagueOnlineText") as Style;
-                txbCompleated.Style = txtOnline;
-            }
-            else
-            {                     
-                btnSend.IsEnabled = false;
-                txbCompleated.Visibility = Visibility.Visible;
-                txbCompleated.Text = "Open your LOL game before, please";
-                Style txtOnline = Application.Current.FindResource("LeagueBusyText") as Style;
-                txbCompleated.Style = txtOnline;
-            }
+            InfoModal modal = new InfoModal();
+            modal.Owner = this;
+            modal.ShowDialog();
         }
     }
 }

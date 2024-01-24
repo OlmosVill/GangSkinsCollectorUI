@@ -12,7 +12,7 @@ namespace GangSkinsCollectorF.Models
     {
         public static List<SkinsCollectionFull> TransformSC(List<SkinsCollections> O1)
         {
-            var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
+            var ConM = new MongoClient("mongodb+srv://GangSkinsUser:NormalUser1@almosttesting.bz8a5nn.mongodb.net/");
             var db = ConM.GetDatabase("GangSkins");
             var SummonerCollection = db.GetCollection<Skins>("Skins"); ;
             if (O1[1].name.Contains("Goth"))
@@ -28,6 +28,10 @@ namespace GangSkinsCollectorF.Models
                 {
                     foreach (var obj2 in AllSkins)
                     {
+                        if (obj2.skinkey == null)
+                        {
+                            break;
+                        }
                         if (obj2.skinchampkey.name == obj1.name)
                         {
                             SkinsCollectionFull item = new SkinsCollectionFull();

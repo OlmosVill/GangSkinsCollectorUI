@@ -1,0 +1,25 @@
+﻿<Window x:Class="GangSkinsCollectorF.InfoModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GangSkinsCollectorF"
+        mc:Ignorable="d"
+        Title="InfoModal" Height="250" Width="250"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Background="#FF020B14" Foreground="#FFCCBD90" FontSize="11" BorderBrush="#FFCBBC8F" ResizeMode="NoResize"
+        >
+    <Grid Background="{DynamicResource LeagueCheckBoxBackgroundMouseOver}">
+        <TextBlock HorizontalAlignment="Center" MinWidth="200" Width="100" TextWrapping="WrapWithOverflow" FontFamily="Cascadia Code" Margin="0,25,0,148" Text="Hello, this software is part of my project GangSkins, you'll visit my GitHub to have more information about this software or my project." />
+        <Button Content="Close" HorizontalAlignment="Center" Height="28" Width="74" Click="Button_Click" VerticalAlignment="Top" Margin="0,170,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="12,214,0,0" TextWrapping="Wrap" Text="Developed by pLOLyers" VerticalAlignment="Top" FontSize="9" Foreground="#FF776E55"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,107,0,93" Width="50" Height="50">
+            <Hyperlink NavigateUri="https://github.com/OlmosVill/GangSkinsCollectorUI" RequestNavigate="hyperlink_requestnavigate" TextDecorations="None">
+                <Image x:Name="ghpLOLyers" HorizontalAlignment="Center" Height="50" Width="50" Source="/Images/github-mark-white.png" VerticalAlignment="Top"/>
+            </Hyperlink>
+        </TextBlock>
+        
+    </Grid>
+</Window>

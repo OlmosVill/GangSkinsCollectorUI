@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="github-mark-white.png" />
     <None Remove="pLOLyerslogo2 300x300.png" />
   </ItemGroup>
 
@@ -19,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="pLOLyerslogo2 300x300.png" />
+    <Resource Include="Images\github-mark-white.png" />
+    <Resource Include="Images\pLOLyerslogo2 300x300.png" />
   </ItemGroup>
 
 </Project>

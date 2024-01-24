@@ -9,7 +9,6 @@ namespace GangSkinsCollectorF
 {
     public class SummonerInfo
     {
-        // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
         [JsonPropertyName("accountId")]
         public int? accountId { get; set; }
 
