@@ -57,7 +57,8 @@ namespace GangSkinsCollectorF
                     }
                     db.CreateCollection(SummonerID.Result.displayName + "Collection");
                     Log("New collecionsummoner created", w);
-                    var SummonerCollection = db.GetCollection<BsonDocument>(SummonerID.Result.displayName + "Collection");
+                    string SumonerFinal = String.Concat(SummonerID.Result.displayName.Where(c => !Char.IsWhiteSpace(c))); ;
+                    var SummonerCollection = db.GetCollection<BsonDocument>(SumonerFinal.ToLower() + "Collection");
                     Task<List<SkinsCollections>> BsonmToInstert = LCUMethods.GetSkinsOfSummonerInBSON(SummonerID.Result.summonerId.GetValueOrDefault());
                     Log("GetSkinsOfSummonerInBSON compleated", w);
                     List<SkinsCollectionFull> SCFull = ToolsMethods.TransformSC(BsonmToInstert.Result);
