@@ -3,16 +3,15 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
+using System.Configuration;
+
 
 
 namespace GangSkinsCollectorF
@@ -45,7 +44,7 @@ namespace GangSkinsCollectorF
                     Log("GetSummonerInfo from LCU", w);
                     Task<List<SkinsCollections>> SkinsOfSummoner = LCUMethods.GetSkinsOfSummoner(SummonerID.Result.summonerId.GetValueOrDefault());
                     Log("Get SkinstOfSummoner LCU", w);
-                    var ConM = new MongoClient("mongodb+srv://GangSkinsUser:NormalUser1@almosttesting.bz8a5nn.mongodb.net/");
+                    var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString); ;
                     var db = ConM.GetDatabase("GangSkins");
                     Log("Det DB From GangSkins", w);
                     var collections = db.ListCollectionNames().ToList();

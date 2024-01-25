@@ -1,10 +1,10 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+
+
 
 namespace GangSkinsCollectorF.Models
 {
@@ -12,7 +12,7 @@ namespace GangSkinsCollectorF.Models
     {
         public static List<SkinsCollectionFull> TransformSC(List<SkinsCollections> O1)
         {
-            var ConM = new MongoClient("mongodb+srv://GangSkinsUser:NormalUser1@almosttesting.bz8a5nn.mongodb.net/");
+            var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString); ;
             var db = ConM.GetDatabase("GangSkins");
             var SummonerCollection = db.GetCollection<Skins>("Skins"); ;
             if (O1[1].name.Contains("Goth"))
