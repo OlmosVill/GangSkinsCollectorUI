@@ -44,7 +44,7 @@ namespace GangSkinsCollectorF
                     Log("GetSummonerInfo from LCU", w);
                     Task<List<SkinsCollections>> SkinsOfSummoner = LCUMethods.GetSkinsOfSummoner(SummonerID.Result.summonerId.GetValueOrDefault());
                     Log("Get SkinstOfSummoner LCU", w);
-                    var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString); ;
+                    var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                     var db = ConM.GetDatabase("GangSkins");
                     Log("Det DB From GangSkins", w);
                     var collections = db.ListCollectionNames().ToList();
