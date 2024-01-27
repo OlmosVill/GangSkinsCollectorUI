@@ -2,6 +2,8 @@
 [![craftersmine - Ui.League](https://img.shields.io/static/v1?label=craftersmine&message=Ui.League&color=blue&logo=github)](https://github.com/craftersmine/Ui.League "Go to GitHub repo")
 [![Created under Riot Legal Jibber Jabber](https://img.shields.io/badge/created_under-Riot_Legal_Jibber_Jabber-red?logo=riot-games)](https://www.riotgames.com/en/legal)
 ![Discord](https://img.shields.io/badge/discord-@olmosvill-5865f2?logo=discord&logoColor=white)
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/olmosvill)
+
 
 
 
