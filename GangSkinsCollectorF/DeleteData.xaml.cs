@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace GangSkinsCollectorF
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             Task<SummonerInfo> SummonerID = LCUMethods.GetSummonerID();
-            var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
+            var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             var db = ConM.GetDatabase("GangSkins");
             var collections = db.ListCollectionNames().ToList();
             string SumonersFinal = String.Concat(SummonerID.Result.displayName.Where(c => !Char.IsWhiteSpace(c)));
