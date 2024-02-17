@@ -10,7 +10,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Configuration;
 
 
 
@@ -39,24 +38,24 @@ namespace GangSkinsCollectorF
             {
                 try
                 {
-
                     Task<SummonerInfo> SummonerID = LCUMethods.GetSummonerID();
                     Log("GetSummonerInfo from LCU", w);
                     Task<List<SkinsCollections>> SkinsOfSummoner = LCUMethods.GetSkinsOfSummoner(SummonerID.Result.summonerId.GetValueOrDefault());
                     Log("Get SkinstOfSummoner LCU", w);
-                    var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    var ConM = new MongoClient("mongodb+srv://olmos:Lolcit0s@almosttesting.bz8a5nn.mongodb.net/");
                     var db = ConM.GetDatabase("GangSkins");
                     Log("Det DB From GangSkins", w);
                     var collections = db.ListCollectionNames().ToList();
                     Log("Get CollectionNames List from Mongo", w);
-
-                    if (collections.Contains(SummonerID.Result.displayName + "Collection"))
+                    string SumonersFinal = String.Concat(SummonerID.Result.displayName.Where(c => !Char.IsWhiteSpace(c)));
+                    string[] Summoners = SumonersFinal.ToLower().Split(',');
+                    if (collections.Contains(Summoners[0] + "Collection"))
                     {
-                        db.DropCollection(SummonerID.Result.displayName + "Collection");
+                        db.DropCollection(Summoners[0] + "Collection");
                     }
-                    db.CreateCollection(SummonerID.Result.displayName + "Collection");
+                    db.CreateCollection(Summoners[0] + "Collection");
                     Log("New collecionsummoner created", w);
-                    string SumonerFinal = String.Concat(SummonerID.Result.displayName.Where(c => !Char.IsWhiteSpace(c))); ;
+                    string SumonerFinal = String.Concat(Summoners[0].Where(c => !Char.IsWhiteSpace(c))); 
                     var SummonerCollection = db.GetCollection<BsonDocument>(SumonerFinal.ToLower() + "Collection");
                     Task<List<SkinsCollections>> BsonmToInstert = LCUMethods.GetSkinsOfSummonerInBSON(SummonerID.Result.summonerId.GetValueOrDefault());
                     Log("GetSkinsOfSummonerInBSON compleated", w);
@@ -143,6 +142,13 @@ namespace GangSkinsCollectorF
         private void LlamarModalClick(object sender, RoutedEventArgs e)
         {
             InfoModal modal = new InfoModal();
+            modal.Owner = this;
+            modal.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DeleteData modal = new DeleteData();
             modal.Owner = this;
             modal.ShowDialog();
         }
