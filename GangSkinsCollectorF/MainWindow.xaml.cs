@@ -146,5 +146,12 @@ namespace GangSkinsCollectorF
             modal.Owner = this;
             modal.ShowDialog();
         }
+
+        private void btnDeleteData_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteData modal = new DeleteData();
+            modal.Owner = this;
+            modal.ShowDialog();
+        }
     }
 }

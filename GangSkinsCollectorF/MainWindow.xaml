@@ -16,5 +16,6 @@
         <Hyperlink Click="openFile_Click" Foreground="#FF480205" TextDecorations="Underline">Click here to se log</Hyperlink>
         </TextBlock>
         <controls:CircleButton x:Name="btnHelp" Content="?" Margin="278,232,78,76" FontWeight="Bold" FontSize="22" Click="CircleButton_Click" Panel.ZIndex="1"/>
+        <Button x:Name="btnDeleteData" Content="Delete data" HorizontalAlignment="Left" Height="28" Margin="31,233,0,0" VerticalAlignment="Top" Width="83" Click="btnDeleteData_Click"/>
     </Grid>
 </Window>
