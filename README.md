@@ -9,7 +9,7 @@
 
 # Hi, I'm Alex! 👋
 
- This is part of my project [Gang Skins](https://twitter.com/), 
+ This is part of my project [Gang Skins](https://gangskins.netlify.app/), 
  the function of this little descktop app is only read your skins inventory from  League of Legends Client and send this collection     to databse, and can do this with League of Legends Client API (LCU).
 
  If you want know more about LCU, you can visit [Hextexh Docs](https://hextechdocs.dev/getting-started-with-the-lcu-api/).
