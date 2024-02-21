@@ -12,7 +12,7 @@ namespace GangSkinsCollectorF.Models
     {
         public static List<SkinsCollectionFull> TransformSC(List<SkinsCollections> O1)
         {
-            var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString); ;
+            var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             var db = ConM.GetDatabase("GangSkins");
             var SummonerCollection = db.GetCollection<Skins>("Skins"); ;
             if (O1[1].name.Contains("Goth"))

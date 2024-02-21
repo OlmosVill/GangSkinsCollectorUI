@@ -5,11 +5,19 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <PackageIcon>pLOLyerslogo2 120x120.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="github-mark-white.png" />
     <None Remove="pLOLyerslogo2 300x300.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Pictures\pLOLyersLogos\pLOLyerslogo2 120x120.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

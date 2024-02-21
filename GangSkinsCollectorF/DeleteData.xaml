@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:GangSkinsCollectorF"
         mc:Ignorable="d"
         Title="DeleteData" Height="219" Width="245"
-        WindowStyle="None"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
-        Background="{DynamicResource LeagueCheckBoxBackgroundDefault}" Foreground="#FFCCBD90" FontSize="11" BorderBrush="#FFCBBC8F" ResizeMode="NoResize"
+        Background="{DynamicResource LeagueCheckBoxBackgroundDefault}" Foreground="#FFCCBD90" FontSize="11" BorderBrush="#FF4E3F13" ResizeMode="NoResize" WindowStyle="None" BorderThickness="1,1,1,1"
         >
     <Grid >
         <TextBlock HorizontalAlignment="Center" MinWidth="200" Width="100" TextWrapping="WrapWithOverflow" FontFamily="Cascadia Code" Margin="0,24,0,149" Text="If want delete your data press button." Foreground="#FFDEC991" FontWeight="Bold" FontSize="16" />

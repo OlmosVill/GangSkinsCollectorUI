@@ -9,7 +9,7 @@
         WindowStyle="None"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
-        Background="#FF020B14" Foreground="#FFCCBD90" FontSize="11" BorderBrush="#FFCBBC8F" ResizeMode="NoResize"
+        Background="#FF020B14" Foreground="#FFCCBD90" FontSize="11" BorderBrush="#FFCBBC8F" ResizeMode="NoResize" BorderThickness="1,1,1,1"
         >
     <Grid Background="{DynamicResource LeagueCheckBoxBackgroundMouseOver}">
         <TextBlock HorizontalAlignment="Center" MinWidth="200" Width="100" TextWrapping="WrapWithOverflow" FontFamily="Cascadia Code" Margin="0,25,0,148" Text="Hello, this software is part of my project GangSkins, you'll visit my GitHub to have more information about this software or my project." />
