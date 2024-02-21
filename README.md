@@ -18,11 +18,7 @@
  
  👩‍💻 I'm currently working on some way to do this without have save yours skins collection but have SkinsCollector on, to skip to save your skins, but i need time. 
 
- Foy the transparent y deiceded left you a string connection to a mongo dabase for you cant see the info too. 
 
- ```bash
-   mongodb+srv://TransparentUser:YouCanSeeYourInfoToo@almosttesting.bz8a5nn.mongodb.net/
-```
 
 
  
