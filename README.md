@@ -1,7 +1,7 @@
 [![Ponita0 - PoniLCU](https://img.shields.io/static/v1?label=Ponita0&message=PoniLCU&color=pink&logo=github)](https://github.com/Ponita0/PoniLCU "Go to GitHub repo")
 [![craftersmine - Ui.League](https://img.shields.io/static/v1?label=craftersmine&message=Ui.League&color=blue&logo=github)](https://github.com/craftersmine/Ui.League "Go to GitHub repo")
 [![Created under Riot Legal Jibber Jabber](https://img.shields.io/badge/created_under-Riot_Legal_Jibber_Jabber-red?logo=riot-games)](https://www.riotgames.com/en/legal)
-![Discord](https://img.shields.io/badge/discord-@olmosvill-5865f2?logo=discord&logoColor=white)
+[![Discord](https://img.shields.io/badge/discord-@pLOLyers-5865f2?logo=discord&logoColor=white)](https://discord.gg/WJnyGutS)
 
 
 ![Logo](https://firebasestorage.googleapis.com/v0/b/gangskinsbyplolyers.appspot.com/o/GangSkins%2FImages%2FpLOLyerslogo2%20120x120.png?alt=media&token=40747810-ddd5-4a95-aeb8-227a9a48c4fa)
