@@ -38,16 +38,16 @@ namespace GangSkinsCollectorF
 
                 Task<SummonerInfo> SummonerID = LCUMethods.GetSummonerID();
                 Task<List<SkinsCollections>> SkinsOfSummoner = LCUMethods.GetSkinsOfSummoner(SummonerID.Result.summonerId.GetValueOrDefault());
+                string SumonerFinal = String.Concat(SummonerID.Result.displayName.Where(c => !Char.IsWhiteSpace(c)));
                 var ConM = new MongoClient(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 var db = ConM.GetDatabase("GangSkins");
                 var collections = db.ListCollectionNames().ToList();
-                if (collections.Contains(SummonerID.Result.displayName + "Collection"))
+                if (collections.Contains(SumonerFinal.ToLower() + "Collection"))
                 {
-                    db.DropCollection(SummonerID.Result.displayName + "Collection");
+                    db.DropCollection(SumonerFinal.ToLower() + "Collection");
                 }
-                db.CreateCollection(SummonerID.Result.displayName + "Collection");
-                string SumonerFinal = String.Concat(SummonerID.Result.displayName.Where(c => !Char.IsWhiteSpace(c)));
                 var SummonerCollection = db.GetCollection<BsonDocument>(SumonerFinal.ToLower() + "Collection");
+                db.CreateCollection(SumonerFinal.ToLower() + "Collection");
                 Task<List<SkinsCollections>> BsonmToInstert = LCUMethods.GetSkinsOfSummonerInBSON(SummonerID.Result.summonerId.GetValueOrDefault());
                 List<SkinsCollectionFull> SCFull = ToolsMethods.TransformSC(BsonmToInstert.Result);
                 List<BsonDocument> ListOfBsons = new List<BsonDocument>();
