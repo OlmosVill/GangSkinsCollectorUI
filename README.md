@@ -18,9 +18,16 @@ About the GangSkins Database, im only get your skin information and summoner nam
 
 👩‍💻 I'm currently working on some way to do this without having to save your skins collection but have SkinsCollector on, to skip to save your skins, but I need time.
 
+ For transparency, I decided to leave you a string connection to a Mongo database for you can't see the info too. 
+ Foy the transparent y deiceded left you a string connection to a mongo dabase for you cant see the info too. 
+
+ ```bash
+   mongodb+srv://TransparentUser:YouCanSeeYourInfoToo@almosttesting.bz8a5nn.mongodb.net/
+ ```
 
 
 ## Instructions
+```bash
 
 1️⃣ Open your League of Legends Client
 
@@ -31,7 +38,7 @@ About the GangSkins Database, im only get your skin information and summoner nam
 4️⃣ Same steps for your friends
 
 5️⃣ Enter GangSkins and build your team skins ;)
-
+```
 
 ## Other
 Thank you, and thanks to Ponita0 and Craftermine for their projects, that is all, contact me if you have any questions.
